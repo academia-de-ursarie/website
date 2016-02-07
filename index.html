@@ -2,9 +2,23 @@
 <html>
   <head>
     <title>Academia de ursarie</title>
-    <script src="js/ursar.js"></script>
+    <script type="application/javascript" src="js/jquery.js"></script>
+    <script type="application/javascript" src="js/underscore.js"></script>
+    <script type="application/javascript" src="js/backbone.js"></script>
   </head>
   <body>
     Welcome to academia de ursarie
+
+    <ul id="link-list"></ul>
+
+    <script type="text/template" id="item-template">
+      <div class="view">
+        <h4><%- title %></h4>
+        <span><%- desc %></span>
+        <p><a href="<%- url %>" target="_blank"><%- url %></a></p>
+      </div>
+    </script>
+
+    <script src="js/ursar.js"></script>
   </body>
 </html>
