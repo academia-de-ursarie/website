@@ -2,19 +2,21 @@
 <html>
   <head>
     <title>Academia de ursarie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script type="application/javascript" src="js/jquery.js"></script>
     <script type="application/javascript" src="js/underscore.js"></script>
     <script type="application/javascript" src="js/backbone.js"></script>
   </head>
   <body>
-    Welcome to academia de ursarie
-
-    <ul id="link-list"></ul>
+    <div class="container-fluid">
+      <h1>Welcome to Academia de Ursarie</h1>
+      <input type="text" class="form-control" />
+      <ul id="link-list"></ul>
+    </div>
 
     <script type="text/template" id="item-template">
       <div class="view">
-        <h4><%- title %></h4>
-        <span><%- desc %></span>
+        <h4><%- title %><br/><small><%- desc %></h4>
         <p><a href="<%- url %>" target="_blank"><%- url %></a></p>
       </div>
     </script>
