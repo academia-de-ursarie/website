@@ -4,14 +4,14 @@ var LinkModel = Backbone.Model.extend({
       title: null,
       desc: null,
       url: null
-    }
+    };
   },
 });
 
 var LinkCollection = Backbone.Collection.extend({
   model: LinkModel,
   url: 'links.json'
-})
+});
 
 var LinkView = Backbone.View.extend({
   tagName: 'li',
@@ -61,7 +61,7 @@ var listView = new LinksView();
 var searching = null;
 
 $('#search').keyup(function(ev) {
-  if(searching != null) {
+  if(searching !== null) {
     clearTimeout(searching);
   }
   var textToFind = ev.target.value;

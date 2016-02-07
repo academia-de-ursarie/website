@@ -15,7 +15,7 @@ function makeTheRequest(url) {
       return;
     }
     
-    if(req.headers['content-type'].substring(0, 'text/html'.length) != 0) {
+    if(req.headers['content-type'].substring(0, 'text/html'.length) !== 0) {
       var body = req.getBody();
       var doc = cheerio.load(body);
 
@@ -23,16 +23,16 @@ function makeTheRequest(url) {
         url: url,
         title: doc('title').text().trim(),
         desc: doc('meta[name="description"]').attr('content') === undefined ? '': doc('meta[name="description"]').attr('content').trim()
-      })
+      });
     } else {
       allObjectInfo.push({
         url: url,
         title: '',
         desc: ''
-      })
+      });
     }
   } catch (e) {
-    console.log(`Eroare: ${e}`)
+    console.log(`Eroare: ${e}`);
   }
 }
 
@@ -43,7 +43,6 @@ allLines.map(line => {
     makeTheRequest(urlFromLine[0]);
   }
 });
-
 
 fs.writeFile("../links.json", JSON.stringify(allObjectInfo), 'UTF-8');
 console.log(`Rezultat: ${JSON.stringify(allObjectInfo)}`);
