@@ -75,9 +75,9 @@ $('#search').keyup(function(ev) {
 function startSearch(word) {
   return setTimeout(function() {
     var filtered = Links.filter(function(elem) {
-      var searchInTitle = elem.get('title') === undefined ? -1 : elem.get('title').toLowerCase().indexOf(word);
-      var searchInDesc = elem.get('desc') === undefined ? -1 : elem.get('desc').toLowerCase().indexOf(word);
-      var searchInUrl = elem.get('url') === undefined ? -1 : elem.get('url').toLowerCase().indexOf(word);
+      var searchInTitle = elem.get('title') === null ? -1 : elem.get('title').toLowerCase().indexOf(word);
+      var searchInDesc = elem.get('desc') === null ? -1 : elem.get('desc').toLowerCase().indexOf(word);
+      var searchInUrl = elem.get('url') === null ? -1 : elem.get('url').toLowerCase().indexOf(word);
 
       return searchInTitle > -1 ||
              searchInUrl > -1 ||
