@@ -10,13 +10,13 @@
   <body>
     <div class="container-fluid">
       <h1>Welcome to Academia de Ursarie</h1>
-      <input type="text" class="form-control" />
+      <input type="text" id="search" class="form-control" />
       <ul id="link-list"></ul>
     </div>
 
     <script type="text/template" id="item-template">
       <div class="view">
-        <h4><%- title %><br/><small><%- desc %></h4>
+        <h3><%- title %><br/><small><%- desc %></h3>
         <p><a href="<%- url %>" target="_blank"><%- url %></a></p>
       </div>
     </script>

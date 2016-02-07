@@ -13,15 +13,9 @@ var LinkCollection = Backbone.Collection.extend({
   url: 'links.json'
 })
 
-var Links = new LinkCollection();
-
 var LinkView = Backbone.View.extend({
   tagName: 'li',
   template: _.template($('#item-template').html()),
-
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
-  },
 
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
@@ -31,14 +25,63 @@ var LinkView = Backbone.View.extend({
 
 var LinksView = Backbone.View.extend({
   el: "#link-list",
+  wasSearching: false,
   initialize: function() {
     this.listenTo(Links, 'add', this.addOne);
+    this.listenTo(Links, 'reset', this.displaySearch);
     Links.fetch();
   },
   addOne: function(linkModel) {
+    if(this.wasSearching === true) {
+      this.clearView();
+      this.wasSearching = false;
+    }
+
     var view = new LinkView({model: linkModel});
     this.$el.append(view.render().el);
+  },
+  displaySearch: function(newModel) {
+    var _this = this;
+
+    this.clearView();
+    newModel.models.forEach(function(model) {
+      _this.addOne(model);
+    });
+    this.wasSearching = true;
+  },
+
+  clearView: function() {
+    this.$el.children().remove();
+    this.$el.empty();
   }
 });
 
+var Links = new LinkCollection();
 var listView = new LinksView();
+var searching = null;
+
+$('#search').keyup(function(ev) {
+  if(searching != null) {
+    clearTimeout(searching);
+  }
+  var textToFind = ev.target.value;
+  if(textToFind.trim().length === 0) {
+    Links.fetch();
+  } else {
+    searching = startSearch(textToFind);
+  }
+});
+
+function startSearch(word) {
+  return setTimeout(function() {
+    var filtered = Links.filter(function(elem) {
+      var searchInTitle = elem.title === undefined ? -1 : elem.title.indexOf(word);
+      var searchInDesc = elem.desc === undefined ? -1 : elem.desc.indexOf(word);
+
+      return searchInTitle > -1 ||
+             elem.get('url').indexOf(word) > -1 ||
+             searchInDesc > -1;
+    });
+    Links.reset(filtered);
+  }, 1000);
+}
