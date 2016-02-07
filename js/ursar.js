@@ -10,7 +10,7 @@ var LinkModel = Backbone.Model.extend({
 
 var LinkCollection = Backbone.Collection.extend({
   model: LinkModel,
-  url: '/links.json'
+  url: 'links.json'
 })
 
 var Links = new LinkCollection();
