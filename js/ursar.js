@@ -75,11 +75,12 @@ $('#search').keyup(function(ev) {
 function startSearch(word) {
   return setTimeout(function() {
     var filtered = Links.filter(function(elem) {
-      var searchInTitle = elem.title === undefined ? -1 : elem.title.indexOf(word);
-      var searchInDesc = elem.desc === undefined ? -1 : elem.desc.indexOf(word);
+      var searchInTitle = elem.get('title') === undefined ? -1 : elem.get('title').toLowerCase().indexOf(word);
+      var searchInDesc = elem.get('desc') === undefined ? -1 : elem.get('desc').toLowerCase().indexOf(word);
+      var searchInUrl = elem.get('url') === undefined ? -1 : elem.get('url').toLowerCase().indexOf(word);
 
       return searchInTitle > -1 ||
-             elem.get('url').indexOf(word) > -1 ||
+             searchInUrl > -1 ||
              searchInDesc > -1;
     });
     Links.reset(filtered);
