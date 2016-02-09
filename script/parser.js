@@ -14,7 +14,7 @@ function makeTheRequest(url) {
     if(req.statusCode != 200) {
       return;
     }
-    
+
     if(req.headers['content-type'].substring(0, 'text/html'.length) !== 0) {
       var body = req.getBody();
       var doc = cheerio.load(body);
