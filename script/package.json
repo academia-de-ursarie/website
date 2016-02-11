@@ -1,8 +1,0 @@
-{
- "name": "academia-de-ursarie",
- "version": "1.0.0",
- "dependencies": {
-   "sync-request": "latest",
-   "cheerio": "latest"
- }
-}
