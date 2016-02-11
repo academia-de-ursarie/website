@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="resources/images/logo-small.png" title="Academia de Ursărie" />
+</p>
 
 Welcome to __Academia de Ursărie__, also known as "Qui est le plus ursar? 101 Heckari pe peronul Academiei de Ursărie cu Nea Doge și șefu' păpădiilor la biro'".
 
@@ -10,8 +13,3 @@ We did our best to keep only the relevant content for you, but NSFW material mig
 __Use this resource at your own risk and please don't disturb us if you potentially damage yourself.__
 
 Version 1: 18.07.2013 - 13.12.2014 (current)
-
-
-
-
-
