@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <title>Academia de ursarie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="application/javascript" src="js/jquery.js"></script>
+    <script type="application/javascript" src="js/underscore.js"></script>
+    <script type="application/javascript" src="js/backbone.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Academia de Ursarie</h1>
+      <input type="text" id="search" class="form-control" autocomplete="off" />
+      <ul id="link-list"></ul>
+    </div>
+
+    <script type="text/template" id="item-template">
+      <div class="view">
+        <h3><%- title %><br/><small><%- desc %></h3>
+        <p><a href="<%- url %>" target="_blank"><%- url %></a></p>
+      </div>
+    </script>
+
+    <script src="js/ursar.js"></script>
+  </body>
+</html>
