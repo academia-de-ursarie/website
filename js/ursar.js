@@ -1,3 +1,6 @@
+var spinner = new Spinner();
+var spinnerDiv = document.getElementById('spinner');
+
 var LinkModel = Backbone.Model.extend({
   defaults: function() {
     return {
@@ -29,8 +32,10 @@ var LinksView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(Links, 'add', this.addOne);
     this.listenTo(Links, 'reset', this.displaySearch);
+    this.listenTo(Links, 'sync', this.syncDone);
     Links.fetch();
   },
+
   addOne: function(linkModel) {
     if(this.wasSearching === true) {
       this.clearView();
@@ -40,6 +45,7 @@ var LinksView = Backbone.View.extend({
     var view = new LinkView({model: linkModel});
     this.$el.append(view.render().el);
   },
+
   displaySearch: function(newModel) {
     var _this = this;
 
@@ -53,6 +59,10 @@ var LinksView = Backbone.View.extend({
   clearView: function() {
     this.$el.children().remove();
     this.$el.empty();
+  },
+
+  syncDone: function() {
+    spinner.stop();
   }
 });
 
@@ -87,3 +97,4 @@ function startSearch(word) {
 }
 
 new LinksView();
+spinnerDiv.appendChild(spinner.spin().el);
