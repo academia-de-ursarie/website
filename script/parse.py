@@ -45,6 +45,7 @@ if __name__ == '__main__':
     f.close()
 
     jsonData = p.map(parseLink, links)
+    jsonData
 
     f = open("../links.json", "w+")
     f.write(json.dumps(jsonData))
