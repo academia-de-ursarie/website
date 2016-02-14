@@ -1,10 +1,12 @@
 .ursar-logo {
     margin-right: 20px;
     width: 100px;
+    float:left;
 }
 
 h1 {
     font-family: Lobster, sans-serif;
+    margin-top: 30px;
 }
 
 .link-list {
@@ -18,4 +20,20 @@ h1 {
     background-color: #eee;
     border-radius: 10px;
     width: 100%;
+}
+
+@media (max-width: 400px) {
+    h1 {
+        display: none;
+    }
+
+    .ursar-logo {
+        width: 100%;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 450px) {
+    h1 {
+        font-size: 27px;
+    }
 }
