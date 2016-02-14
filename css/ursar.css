@@ -1,0 +1,21 @@
+.ursar-logo {
+    margin-right: 20px;
+    width: 100px;
+}
+
+h1 {
+    font-family: Lobster, sans-serif;
+}
+
+.link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-container {
+    margin-top: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    width: 100%;
+}

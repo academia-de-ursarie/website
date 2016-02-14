@@ -7,21 +7,23 @@
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/x-icon" href="resources/favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/ursar.css" />
     <script type="application/javascript" src="js/jquery.js"></script>
     <script type="application/javascript" src="js/underscore.js"></script>
     <script type="application/javascript" src="js/backbone.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1 style="font-family: Lobster;"><img src="resources/images/logo-small.png" width="100px" style="margin-right: 20px;" />Welcome to Academia de Ursărie</h1>
+      <h1><img src="resources/images/logo-small.png" class="ursar-logo" />Welcome to Academia de Ursărie</h1>
       <input type="text" id="search" class="form-control" autocomplete="off" />
-      <ul id="link-list"></ul>
+      <ul id="link-list" class="link-list"></ul>
     </div>
 
     <script type="text/template" id="item-template">
-      <div class="view">
-        <h3><%- title %><br/><small><%- desc %></h3>
-        <p><a href="<%- url %>" target="_blank"><%- url %></a></p>
+      <div class="container bg-warning link-container">
+        <h3 class="text-primary"><%- title %></h3>
+        <p><%- desc %></p>
+        <p><a href="<%- url %>" target="_blank" class="text-info"><%- url %></a></p>
       </div>
     </script>
 
