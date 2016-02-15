@@ -1,36 +1,60 @@
 import re
 import requests
 import sys
+import threading
+import io
 import json
 
 from multiprocessing import Pool, freeze_support
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
+lockObj = threading.Lock()
 links = []
-urlPattern = re.compile("(http://|https://)(\S+)")
+urlPattern = re.compile(
+        "(\[([\d\/]+\s*[\d:]+\s*\w+)\]).*((http|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?)")
 
-def parseLink(link):
-    try:
-        r = requests.get(link)
-        r.encoding = 'UTF-8'
-        title = ''
-        desc = ''
 
-        if r.status_code == 200:
-            if r.headers['Content-Type'] is 'text/html':
-                html = BeautifulSoup(r.content)
-                desc = html.find('meta', attrs={'name': 'description'})
-                title = html.title.string
-                desc = ["" if desc is None else desc['content']]
+class ParseLink():
+    def __init__(self, *data):
+        (self.__date, self.__link) = data
+        self.__title = ''
+        self.__desc = ''
 
-        return {
-                'url': link,
-                'title': title,
-                'desc': desc
-            }
-    except:
-        print "Error %s - %s\n" % (link, sys.exc_info()[0])
-        return None
+    def parse(self):
+        try:
+            r = requests.get(self.__link)
+            r.encoding = 'UTF-8'
+
+            if r.status_code == 200:
+                if "text/html" in r.headers['Content-Type']:
+                    (self.__title, self.__desc) = self.__extract_data(r.content)
+                self.__write_to_file()
+
+        except:
+            print "Error %s - %s\n" % (self.__link, sys.exc_info()[0])
+
+    @staticmethod
+    def __extract_data(body):
+        html = BeautifulSoup(body)
+        desc = html.find('meta', attrs={'name': 'description'})
+        title = html.title.string.strip(' \t\n\r')
+        desc = desc['content'].strip(' \t\n\r') if desc is not None else ''
+
+        return title, desc
+
+    def __write_to_file(self):
+        lockObj.acquire()
+        with open("../links.json", "a") as jf:
+            jf.write(str(self) + ",")
+        lockObj.release()
+
+    def __str__(self):
+        return json.dumps({"url": self.__link, "date": self.__date, "title": self.__title, "desc": self.__desc})
+
+
+def parseLink(data):
+    print "Parse: %s" % data[1]
+    ParseLink(*data).parse()
 
 
 if __name__ == '__main__':
@@ -41,12 +65,16 @@ if __name__ == '__main__':
     for line in f:
         url = urlPattern.search(line)
         if url is not None:
-            links.append(url.group(0))
+            links.append((url.group(2), url.group(3)))
     f.close()
 
-    jsonData = p.map(parseLink, links)
-    jsonData
+    jsonFile = open("../links.json", "w+")
+    jsonFile.write("[")
+    jsonFile.close()
 
-    f = open("../links.json", "w+")
-    f.write(json.dumps(jsonData))
-    f.close()
+    p.map(parseLink, links)
+
+    jsonFile = open("../links.json", "r+")
+    jsonFile.seek(-1, io.SEEK_END)
+    jsonFile.write("]")
+    jsonFile.close()
