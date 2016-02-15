@@ -6,7 +6,8 @@ var LinkModel = Backbone.Model.extend({
     return {
       title: null,
       desc: null,
-      url: null
+      url: null,
+      date: null
     };
   }
 });
