@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
-    <title>Academia de ursarie</title>
-    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <title>Academia de Ursărie</title>
     <link rel="icon" type="image/x-icon" href="resources/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/ursar.css" />
     <script type="text/javascript" src="resources/js/spin.min.js"></script>
@@ -14,22 +14,30 @@
     <script type="application/javascript" src="resources/js/backbone.js"></script>
   </head>
   <body>
-    <div class="container">
-      <img src="resources/images/academia-de-ursarie-bear-small.png" class="ursar-logo" />
-      <h1>Welcome to Academia de Ursărie</h1>
-      <input type="text" id="search" class="form-control" autocomplete="off" />
-      <ul id="link-list" class="link-list"></ul>
-      <div id="spinner"></div>
-    </div>
-
-    <script type="text/template" id="item-template">
-      <div class="container bg-warning link-container">
-        <h3 class="text-primary"><%- title %><small> [<%- date %>]</small></h3>
-        <p><%- desc %></p>
-        <p><a href="<%- url %>" target="_blank" class="text-info"><%- url %></a></p>
+      <div class="header container">
+          <img src="resources/images/academia-de-ursarie-bear-small.png" class="ursar-logo" />
+          <h1>Academia de Ursărie</h1>
+          <h4>Qui est le plus ursar? 101 Heckari pe peronul Academiei de Ursărie cu Nea Doge și șefu' păpădiilor la biro'</h4>
+          <input type="text" id="search" class="form-control" autocomplete="off" placeholder="Search.." />
       </div>
-    </script>
 
-    <script src="resources/js/ursar.js"></script>
+      <div class="content container">
+        <ul id="link-list" class="link-list"></ul>
+        <div id="spinner"></div>
+      </div>
+
+      <script type="text/template" id="item-template">
+        <div class="link container">
+          <p class="url">
+            <a href="<%- url %>" target="_blank">
+              <%- title %>
+            </a>
+          </p>
+          <p class="metadata"><span>Date</span> <%- date %></p>
+          <p class="description"><%- desc %></p>
+        </div>
+      </script>
+
+      <script type="application/javascript" src="resources/js/ursar.js"></script>
   </body>
 </html>
