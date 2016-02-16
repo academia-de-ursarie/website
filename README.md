@@ -8,7 +8,7 @@ Welcome to __Academia de Ursărie__, also known as "Qui est le plus ursar? 101 H
 
 Simply put, this resource contains the archive of links, especially related to __IT__ field and __Software Development__, with dedication towards __JavaScript__.
 
-The links are not classified, organized nor labeled. At least not for the first release. Ursar's still need to acquire some data mining skills.
+The links are not classified, organized nor labeled. At least not for the first release. Ursars still need to acquire some data mining skills.
 
 We did our best to keep only the relevant content for you, but NSFW material might still be present. 
 
