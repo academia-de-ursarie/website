@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="resources/images/logo-small.png" title="Academia de Ursărie" />
+  <a href="http://academia-de-ursarie.github.io/website">
+    <img src="resources/images/academia-de-ursarie-small.png" title="Academia de Ursărie" />
+  </a>
 </p>
 
 Welcome to __Academia de Ursărie__, also known as "Qui est le plus ursar? 101 Heckari pe peronul Academiei de Ursărie cu Nea Doge și șefu' păpădiilor la biro'".

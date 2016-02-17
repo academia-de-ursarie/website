@@ -1,0 +1,110 @@
+h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 30px;
+    margin: 5px 0px 5px 0px;
+    color: #444444;
+}
+
+h4 {
+    font-family: 'Noto Sans', sans-serif;
+    color: #444444; 
+    font-size: 16px;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.header {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.ursar-logo {
+    margin-right: 20px;
+    width: 70px;
+    float:left;
+}
+
+.form-control {
+    background: #f7f7f7;
+    margin-top: 30px;
+    border: 1px solid #F7F7F7;
+    box-shadow: none;
+}
+
+.link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-container {
+    margin-top: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.link {
+    margin-bottom: 20px;
+    background: #f7f7f7;
+    width: 100%;
+}
+
+.link:hover {
+    background: #fff;
+}
+
+.link .url {
+    font-size: 18px;
+    margin: 10px 0px 0px 0px;
+}
+
+.link .metadata {
+    font-size: 11px;
+    color: #aea8a8;
+    margin: 5px 0px 5px 0px;
+    text-transform: uppercase;
+}
+.link .metadata span {
+    margin-right: 5px;
+}
+
+.link .description {
+    color: #444444;
+}
+
+.link a {
+    color: #444444;
+}
+
+#spinner {
+    position: relative;
+    margin-top: 50px;
+}
+
+.spinner {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@media (max-width: 400px) {
+    h1, h4 {
+        display: none;
+    }
+
+    .ursar-logo {
+        width: 100%;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 450px) {
+    h1 {
+        font-size: 27px;
+    }
+
+    h4 {
+        font-size: 12px;
+    }
+}

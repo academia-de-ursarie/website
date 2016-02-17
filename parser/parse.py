@@ -61,7 +61,7 @@ if __name__ == '__main__':
     freeze_support()
     p = Pool()
 
-    f = open("../Version-1/academia-de-ursarie-version-1.txt", "r")
+    f = open("../raw/academia-de-ursarie-20141209.txt", "r")
     for line in f:
         url = urlPattern.search(line)
         if url is not None:
