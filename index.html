@@ -30,8 +30,10 @@
         <div class="link container">
           <p class="url">
             <a href="<%- url %>" target="_blank">
-              <% if(url.endsWith('.jpg') || url.endsWith('.png') || url.endsWith('.gif') || url.endsWith('.jpeg')) { %>
+              <% if (image == true) { %>
                 <img src="<%- url %>" />
+              <% } if (url.endsWith('.pdf') || url.endsWith('.zip')) { %>
+                  Please download it.
               <% } else { %>
                 <%- title %>
               <% } %>

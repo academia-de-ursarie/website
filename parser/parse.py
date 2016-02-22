@@ -19,15 +19,18 @@ class ParseLink():
         (self.__date, self.__link) = data
         self.__title = ''
         self.__desc = ''
+        self.__image = False
 
     def parse(self):
         try:
-            r = requests.get(self.__link)
+            r = requests.get(self.__link, timeout=5)
             r.encoding = 'UTF-8'
 
             if r.status_code == 200:
                 if "text/html" in r.headers['Content-Type']:
-                    (self.__title, self.__desc) = self.__extract_data(r.content)
+                    self.__title, self.__desc = self.__extract_data(r.content)
+                elif "image" in r.headers['Content-Type']:
+                    self.__image = True
                 self.__write_to_file()
 
         except:
@@ -35,7 +38,7 @@ class ParseLink():
 
     @staticmethod
     def __extract_data(body):
-        html = BeautifulSoup(body)
+        html = BeautifulSoup(body, "html.parser")
         desc = html.find('meta', attrs={'name': 'description'})
         title = html.title.string.strip(' \t\n\r')
         desc = desc['content'].strip(' \t\n\r') if desc is not None else ''
@@ -49,7 +52,7 @@ class ParseLink():
         lockObj.release()
 
     def __str__(self):
-        return json.dumps({"url": self.__link, "date": self.__date, "title": self.__title, "desc": self.__desc})
+        return json.dumps({"url": self.__link, "date": self.__date, "title": self.__title, "desc": self.__desc, "image": self.__image})
 
 
 def parseLink(data):
