@@ -7,7 +7,7 @@ h1 {
 
 h4 {
     font-family: 'Noto Sans', sans-serif;
-    color: #444444; 
+    color: #444444;
     font-size: 16px;
     padding-top: 0;
     margin-top: 0;
@@ -51,12 +51,17 @@ h4 {
 }
 
 .link:hover {
-    background: #fff;
+    background: #E6E6E6;
 }
 
 .link .url {
     font-size: 18px;
     margin: 10px 0px 0px 0px;
+}
+
+.link .url img {
+  max-width: 100%;
+  width: auto;
 }
 
 .link .metadata {

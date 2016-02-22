@@ -30,7 +30,11 @@
         <div class="link container">
           <p class="url">
             <a href="<%- url %>" target="_blank">
-              <%- title %>
+              <% if(url.endsWith('.jpg') || url.endsWith('.png') || url.endsWith('.gif') || url.endsWith('.jpeg')) { %>
+                <img src="<%- url %>" />
+              <% } else { %>
+                <%- title %>
+              <% } %>
             </a>
           </p>
           <p class="metadata"><span>Date</span> <%- date %></p>
