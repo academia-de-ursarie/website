@@ -14,7 +14,13 @@ var LinkModel = Backbone.Model.extend({
 
 var LinkCollection = Backbone.Collection.extend({
   model: LinkModel,
-  url: 'links.json'
+  url: 'links.json'//,
+
+  // Should find a way to handle sort at initialization because the add event
+  // is called before sorting. Maybe add all models in sync event.
+  // comparator: function(link) {
+  //   return -(new Date(link.get('date'))).getTime();
+  // }
 });
 
 var LinkView = Backbone.View.extend({
@@ -44,7 +50,8 @@ var LinksView = Backbone.View.extend({
     }
 
     var view = new LinkView({model: linkModel});
-    this.$el.append(view.render().el);
+    // Switched append to prepend as temp sorting hack
+    this.$el.prepend(view.render().el);
   },
 
   displaySearch: function(newModel) {
